@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:gravity="center">
+    android:gravity="center"
+    tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/EditText_FelNevVEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Felhasználónév vagy Email"
-        android:textSize="25sp"
-        />
+        android:inputType="textEmailAddress"
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/EditText_Jelszo"
@@ -21,23 +21,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/EditText_FelNevVEmail"
         android:hint="Jelszó"
-        android:textSize="25sp"
-        />
+        android:inputType="textPassword"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/Button_Bejelentkezes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/EditText_Jelszo"
-        android:text="Bejelentkezés"
-        />
+        android:text="Bejelentkezés" />
 
     <Button
         android:id="@+id/Button_Regisztracio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Button_Bejelentkezes"
-        android:text="Regisztráció"
-        />
+        android:text="Regisztráció" />
 
 </RelativeLayout>
