@@ -2,6 +2,7 @@ package com.example.logreg;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -51,4 +52,9 @@ public class dbhelper extends SQLiteOpenHelper {
 
         return db.insert(FELHASZNALO_TABLE, null, values) != -1;
     }
+
+//    public Cursor teljesnevLekerdezes(String felhnev, String jelszo) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        db.rawQuery("SELECT teljesnev FROM felhasznalo", null);
+//    }
 }

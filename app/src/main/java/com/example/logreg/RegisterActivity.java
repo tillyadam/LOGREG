@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class RegisterActivity extends AppCompatActivity {
     private EditText EditText_RegisterEmail, EditText_RegisterFelhasznalonev, EditText_RegisterJelszo, EditText_RegisterTeljesnev;
     private Button Button_RegisterRegisztracio, Button_RegisterVissza;
+    private dbhelper adatbazis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,16 @@ public class RegisterActivity extends AppCompatActivity {
                     EditText_RegisterFelhasznalonev.getText().clear();
                     EditText_RegisterJelszo.getText().clear();
                     EditText_RegisterTeljesnev.getText().clear();
-                    toastSikeres();
+                    if (adatbazis.regisztracio( EditText_RegisterEmail.getText().toString(),
+                                                EditText_RegisterFelhasznalonev.getText().toString(),
+                                                EditText_RegisterJelszo.getText().toString(),
+                                                EditText_RegisterTeljesnev.getText().toString())) {
+                        toastSikeres();
+                    } else {
+                        toastSikertelen();
+                    }
+
+
                 }
             }
         });
@@ -72,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
         EditText_RegisterTeljesnev = findViewById(R.id.EditText_RegisterTeljesnev);
         Button_RegisterRegisztracio = findViewById(R.id.Button_RegisterRegisztracio);
         Button_RegisterVissza = findViewById(R.id.Button_RegisterVissza);
+        adatbazis = new dbhelper(RegisterActivity.this);
     }
 
     private void toast(String hiba) {
@@ -80,5 +91,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void toastSikeres() {
         Toast.makeText(this, "Sikeres regisztráció", Toast.LENGTH_SHORT).show();
+    }
+
+    private void toastSikertelen() {
+        Toast.makeText(this, "Sikertelen regisztráció", Toast.LENGTH_SHORT).show();
     }
 }
