@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".RegisterActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/EditText_RegisterEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/EditText_RegisterFelhasznalonev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditText_RegisterEmail"
+        android:hint="Felhasználónév"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/EditText_RegisterJelszo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditText_RegisterFelhasznalonev"
+        android:hint="Jelszó"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/EditText_RegisterTeljesnev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditText_RegisterJelszo"
+        android:hint="Teljes név"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/Button_RegisterRegisztracio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditText_RegisterTeljesnev"
+        android:text="Regisztráció" />
+
+    <Button
+        android:id="@+id/Button_RegisterVissza"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Button_RegisterRegisztracio"
+        android:text="Vissza" />
+
+</RelativeLayout>

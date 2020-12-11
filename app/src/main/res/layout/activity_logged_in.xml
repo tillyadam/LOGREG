@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/TextView_TeljesNev"
-        android:text="Kijelentkezés"
-        android:textSize="25sp"/>
+        android:text="Kijelentkezés"/>
 
 </RelativeLayout>
