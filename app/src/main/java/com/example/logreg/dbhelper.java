@@ -1,5 +1,6 @@
 package com.example.logreg;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -38,5 +39,16 @@ public class dbhelper extends SQLiteOpenHelper {
         String sql = "DROP TABLE IF EXISTS " + FELHASZNALO_TABLE;
         db.execSQL(sql);
         onCreate(db);
+    }
+
+    public boolean regisztracio(String email, String felhnev, String jelszo, String teljesnev) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_EMAIL, email);
+        values.put(COL_FELHNEV, felhnev);
+        values.put(COL_JELSZO, jelszo);
+        values.put(COL_TELJESNEV, teljesnev);
+
+        return db.insert(FELHASZNALO_TABLE, null, values) != -1;
     }
 }
