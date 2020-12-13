@@ -45,21 +45,19 @@ public class MainActivity extends AppCompatActivity {
                 } else if (jelszo.length() == 0) {
                     toast("jelszó");
                     return;
+                } else if ((adatbazis.login(felhasznalonev, jelszo).getCount() == 0) || (!adatbazis.felhasznaloEllenorzes(felhasznalonev))) {
+                    toastHiba();
+                    return;
                 } else {
-
-
-                    if ((adatbazis.login(felhasznalonev, jelszo).getCount() == 0) || (!adatbazis.felhasznaloEllenorzes(felhasznalonev))) {
-                        toastHiba();
-                    } else {
-                        editor.putString("felhasznalonev", felhasznalonev);
-                        editor.putString("jelszo", jelszo);
-                        editor.commit();
-                        Intent logActivityre = new Intent(MainActivity.this, LoggedInActivity.class);
-                        startActivity(logActivityre);
-                        finish();
-                    }
+                    editor.putString("felhasznalonev", felhasznalonev);
+                    editor.putString("jelszo", jelszo);
+                    editor.commit();
+                    Intent logActivityre = new Intent(MainActivity.this, LoggedInActivity.class);
+                    startActivity(logActivityre);
+                    finish();
                 }
             }
+
         });
     }
 
@@ -68,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         EditText_Jelszo = findViewById(R.id.EditText_Jelszo);
         Button_Bejelentkezes = findViewById(R.id.Button_Bejelentkezes);
         Button_Regisztracio = findViewById(R.id.Button_Regisztracio);
+        adatbazis = new dbhelper(MainActivity.this);
         sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
