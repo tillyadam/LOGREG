@@ -53,8 +53,17 @@ public class dbhelper extends SQLiteOpenHelper {
         return db.insert(FELHASZNALO_TABLE, null, values) != -1;
     }
 
-//    public Cursor teljesnevLekerdezes(String felhnev, String jelszo) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        db.rawQuery("SELECT teljesnev FROM felhasznalo", null);
-//    }
+    public Cursor select() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + FELHASZNALO_TABLE, null);
+    }
+
+    public Cursor login(String nevVemail, String jelszo) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT " + COL_TELJESNEV + " FROM " + FELHASZNALO_TABLE +
+                                " WHERE ( " + COL_FELHNEV + " =? OR " + COL_EMAIL + " =? ) " +
+                                "AND " + COL_JELSZO + " =? ", new String[]{nevVemail, nevVemail, jelszo});
+    }
+
+
 }
