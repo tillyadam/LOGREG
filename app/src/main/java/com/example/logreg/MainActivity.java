@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String felhasznalonev = EditText_FelNevVEmail.getText().toString().trim();
-                String jelszo = EditText_FelNevVEmail.getText().toString().trim();
+                String jelszo = EditText_Jelszo.getText().toString().trim();
 
                 if (felhasznalonev.length() == 0) {
                     toast("felhasználónév / e-mail");
