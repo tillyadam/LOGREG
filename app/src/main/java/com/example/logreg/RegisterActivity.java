@@ -24,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean kitoltve = true;
+                Button_RegisterRegisztracio.setEnabled(false);
                 if (EditText_RegisterEmail.getText().toString().trim().length() == 0) {
                     EditText_RegisterEmail.setError("Adjon meg e-mailt!");
                     toast("e-mail");
@@ -47,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (kitoltve == true) {
+                    Button_RegisterRegisztracio.setEnabled(true);
                     EditText_RegisterEmail.getText().clear();
                     EditText_RegisterFelhasznalonev.getText().clear();
                     EditText_RegisterJelszo.getText().clear();

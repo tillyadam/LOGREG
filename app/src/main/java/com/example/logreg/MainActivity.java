@@ -39,20 +39,26 @@ public class MainActivity extends AppCompatActivity {
                 String felhasznalonev = EditText_FelNevVEmail.getText().toString().trim();
                 String jelszo = EditText_FelNevVEmail.getText().toString().trim();
 
-                if (felhasznalonev.length()==0){
+                if (felhasznalonev.length() == 0) {
                     toast("felhasználónév / e-mail");
                     return;
-                }else if (jelszo.length()==0){
+                } else if (jelszo.length() == 0) {
                     toast("jelszó");
                     return;
-                }
+                } else {
 
-                editor.putString("felhasznalonev", felhasznalonev);
-                editor.putString("jelszo", jelszo);
-                editor.commit();
-                Intent logActivityre = new Intent(MainActivity.this, LoggedInActivity.class);
-                startActivity(logActivityre);
-                finish();
+
+                    if ((adatbazis.login(felhasznalonev, jelszo).getCount() == 0) || (!adatbazis.felhasznaloEllenorzes(felhasznalonev))) {
+                        toastHiba();
+                    } else {
+                        editor.putString("felhasznalonev", felhasznalonev);
+                        editor.putString("jelszo", jelszo);
+                        editor.commit();
+                        Intent logActivityre = new Intent(MainActivity.this, LoggedInActivity.class);
+                        startActivity(logActivityre);
+                        finish();
+                    }
+                }
             }
         });
     }
@@ -68,5 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void toast(String hiba) {
         Toast.makeText(this, "Nincs megadva " + hiba + " !", Toast.LENGTH_SHORT).show();
+    }
+
+    private void toastHiba() {
+        Toast.makeText(this, "Nincs ilyen felhasználó!", Toast.LENGTH_SHORT).show();
     }
 }
